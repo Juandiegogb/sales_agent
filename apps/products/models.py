@@ -21,7 +21,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(null=True)
     group = models.ForeignKey(Group, on_delete=models.DO_NOTHING)
-    Brand = models.ForeignKey(Brand, on_delete=models.DO_NOTHING)
+    brand = models.ForeignKey(Brand, on_delete=models.DO_NOTHING)
     is_active = models.BooleanField(default=True)
 
 
