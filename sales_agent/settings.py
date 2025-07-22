@@ -11,6 +11,20 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
+DB_NAME = getenv("DB_NAME")
+DB_USER = getenv("DB_USER")
+DB_PWD = getenv("DB_PWD")
+DB_HOST = getenv("DB_HOST")
+DB_PORT = getenv("DB_PORT")
+
+uri_connection = (
+    f"postgresql+psycopg2://{DB_USER}:{DB_PWD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +51,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_extensions",
     # custom apps
     "apps.products",
 ]
@@ -77,11 +92,11 @@ WSGI_APPLICATION = "sales_agent.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "sales_agent",
-        "USER": "postgres",
-        "PASSWORD": "Admin",
-        "HOST": "127.0.0.1",
-        "PORT": "5500",
+        "NAME": DB_NAME,
+        "USER": DB_USER,
+        "PASSWORD": DB_PWD,
+        "HOST": DB_HOST,
+        "PORT": DB_PORT,
     }
 }
 
