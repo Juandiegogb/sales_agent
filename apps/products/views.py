@@ -32,7 +32,4 @@ class SearchProducts(APIView):
 
         if not results:
             return Response("No products matched")
-
-        print(results)
-
         return Response(results)
