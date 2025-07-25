@@ -85,8 +85,6 @@ TEMPLATES = [
 ]
 
 
-
-
 WSGI_APPLICATION = "sales_agent.wsgi.application"
 
 

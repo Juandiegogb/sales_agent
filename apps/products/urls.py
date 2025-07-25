@@ -1,9 +1,12 @@
 from rest_framework import routers
-from .views import SearchProducts
-from django.urls import include, path
+from .views import ShowProducts, SearchProducts
+from django.urls import path
 
 
 router = routers.DefaultRouter()
 
 
-urlpatterns = [path("", SearchProducts.as_view())]
+urlpatterns = [
+    path("", ShowProducts.as_view()),
+    path("search", SearchProducts.as_view()),
+]
